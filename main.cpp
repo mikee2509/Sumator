@@ -4,13 +4,13 @@ using namespace std;
 
 int main()
 {
-    Cyfra nowa(8,16);
-    Cyfra druga(7,16);
-    Cyfra jakas = nowa+druga;
-
-    jakas.showDigit();
+    Cyfra jeden(1,15);
+    Cyfra dwa(2,16);
+    Cyfra trzy(3, 16);
+    Liczba jakas(16, 5, -1, 6, 34, 15, 1);
+    jakas.showNumber();
+    cout << endl;
     jakas.showBase();
-    jakas.showCarry();
 
 
     return 0;

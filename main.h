@@ -2,6 +2,7 @@
 #define MAIN_H_INCLUDED
 #include <iostream>
 #include <vector>
+#include <cstdarg>
 #include "cyfra.h"
 #include "liczba.h"
 

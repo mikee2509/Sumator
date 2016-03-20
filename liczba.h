@@ -11,8 +11,9 @@ class Liczba
     vector<Cyfra> number;
 
 public:
-    Liczba(unsigned char baza) { base = baza; }
+    Liczba(unsigned char baza, int n=0, ...);
     void showBase() { cout << "Baza: " << static_cast<short>(base) << endl;}
+    void showNumber();
     void setBase(const unsigned char baza) { base = baza; }
     unsigned char getBase() { return base; }
 
