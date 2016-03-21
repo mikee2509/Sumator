@@ -4,14 +4,20 @@ using namespace std;
 
 int main()
 {
-    Cyfra jeden(1,15);
-    Cyfra dwa(2,16);
-    Cyfra trzy(3, 16);
-    Liczba jakas(16, 5, -1, 6, 34, 15, 1);
+    Liczba jakas(2, 6, 0, 0, 1, 0, 1, 1);
     jakas.showNumber();
-    cout << endl;
-    jakas.showBase();
+    nl();
+    Liczba druga(2, 4, 0, 1, 1, 1);
+    druga.showNumber();
+    nl();
 
+    Liczba trzecia = jakas+druga;
+    trzecia.showNumber();
 
     return 0;
+}
+
+void nl()
+{
+    cout << endl << endl;
 }

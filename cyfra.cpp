@@ -47,7 +47,7 @@ Cyfra Cyfra::operator+(Cyfra &q)
         cout << "UWAGA! Niezgodne bazy." << endl;
         return Cyfra(0,2,0);
     }
-    bool newCarry = false;
+    bool newCarry = carry || q.carry;
     unsigned char newDigit = (digit + q.digit) % base;
     if((digit+q.digit) >= base) newCarry = true;
 

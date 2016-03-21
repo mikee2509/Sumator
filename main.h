@@ -3,8 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <cstdarg>
+#include <algorithm>
 #include "cyfra.h"
 #include "liczba.h"
 
+void nl();
 
 #endif // MAIN_H_INCLUDED
