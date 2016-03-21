@@ -33,6 +33,88 @@ void Liczba::showNumber()
     }
 }
 
+void Liczba::setNumber(long num, unsigned char baza)
+{
+    base = baza;
+    number.clear();
+
+    int width=1;
+    if(base>10 && base<=100) width=2;
+    else if(base>100) width=3;
+
+    stringstream ss;
+    string numstr, choose;
+    int i, temp;
+    ss << num;
+    ss >> numstr;
+    ss.str(string());
+    ss.clear();
+    int length = numstr.size();
+    for(i=length; i>0; i-=width)
+    {
+        if(i>width)
+        {
+            choose = numstr.substr(i-width, width);
+            ss << choose;
+            ss >> temp;
+            ss.str(string());
+            ss.clear();
+            number.push_back(Cyfra(static_cast<unsigned char>(temp), base));
+            numstr.erase(i-width, width);
+        }
+        else
+        {
+            ss << numstr;
+            ss >> temp;
+            ss.str(string());
+            ss.clear();
+            number.push_back(Cyfra(static_cast<unsigned char>(temp), base));
+        }
+    }
+    reverse(number.begin(), number.end());
+}
+
+void Liczba::setNumberL(long long num, unsigned char baza)
+{
+    base = baza;
+    number.clear();
+
+    int width=1;
+    if(base>10 && base<=100) width=2;
+    else if(base>100) width=3;
+
+    stringstream ss;
+    string numstr, choose;
+    int i, temp;
+    ss << num;
+    ss >> numstr;
+    ss.str(string());
+    ss.clear();
+    int length = numstr.size();
+    for(i=length; i>0; i-=width)
+    {
+        if(i>width)
+        {
+            choose = numstr.substr(i-width, width);
+            ss << choose;
+            ss >> temp;
+            ss.str(string());
+            ss.clear();
+            number.push_back(Cyfra(static_cast<unsigned char>(temp), base));
+            numstr.erase(i-width, width);
+        }
+        else
+        {
+            ss << numstr;
+            ss >> temp;
+            ss.str(string());
+            ss.clear();
+            number.push_back(Cyfra(static_cast<unsigned char>(temp), base));
+        }
+    }
+    reverse(number.begin(), number.end());
+}
+
 Liczba Liczba::operator+(Liczba &q)
 {
     if(base!=q.base)
@@ -121,4 +203,41 @@ Liczba Liczba::killLeadingZeroes(Liczba &original)
         }
     }
     return nowa;
+}
+
+string Liczba::toString()
+{
+    int width=1;
+    if(base>10 && base<=100) width=2;
+    else if(base>100) width=3;
+
+    stringstream ss;
+    string str;
+    vector<Cyfra>::iterator i;
+    for(i=number.begin(); i!=number.end(); i++)
+        ss << setfill('0') << setw(width) << static_cast<int>(i->getDigit());
+    ss >> str;
+    return str;
+}
+
+long Liczba::toLong()
+{
+    long wynik = strtol(toString().c_str(), NULL, 10);
+    return wynik;
+}
+
+long long Liczba::toLongLong()
+{
+    long long wynik = strtoll(toString().c_str(), NULL, 10);
+    return wynik;
+}
+
+Cyfra* Liczba::ptrDigitOfNumber(int thisOne)
+{
+    return &number[thisOne];
+}
+
+Cyfra Liczba::getDigitOfNumber(int thisOne)
+{
+    return number[thisOne];
 }

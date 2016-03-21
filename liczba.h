@@ -16,15 +16,17 @@ class Liczba
 
 public:
     Liczba(unsigned char baza, int n=0, ...);
-    void setBase(const unsigned char baza) { base = baza; }
     void showBase() { cout << "Baza: " << static_cast<short>(base) << endl;}
     void showNumber();
+    void setNumber(long num, unsigned char baza);
+    void setNumberL(long long num, unsigned char baza);
     unsigned char getBase() { return base; }
     Liczba operator+(Liczba &q);
-
-//  long toLong();
-//  void saveLong(const long liczba);
-//  void saveLong(const long liczba, const unsigned char baza);
+    string toString();
+    long toLong();
+    long long toLongLong();
+    Cyfra* ptrDigitOfNumber(int thisOne);
+    Cyfra getDigitOfNumber(int thisOne);
 };
 
 #endif // LICZBA_H

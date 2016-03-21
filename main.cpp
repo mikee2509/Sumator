@@ -4,16 +4,31 @@ using namespace std;
 
 int main()
 {
-    Liczba jakas(2, 6, 0, 0, 1, 0, 1, 1);
+    Liczba jakas(240, 6, 8, 5, 235, 89, 103, 155);
     jakas.showNumber();
+    cout << endl << jakas.toLongLong();
     nl();
-    Liczba druga(2, 4, 0, 1, 1, 1);
+
+    Liczba druga(240, 4, 239, 84, 132, 135);
     druga.showNumber();
+    cout << endl << druga.toLongLong();
     nl();
 
     Liczba trzecia = jakas+druga;
     trzecia.showNumber();
+    cout << endl << "Longlong: " << trzecia.toLongLong();
+    cout << endl << "String: " <<  trzecia.toString();
+    nl();
+    nl();
 
+    Liczba nowa(16, 3, 15, 8, 5);
+    nowa.showBase();
+    nowa.showNumber();
+    nl();
+
+    nowa.setNumberL(1234254, 55);
+    nowa.showBase();
+    nowa.showNumber();
     return 0;
 }
 
