@@ -1,5 +1,10 @@
 #include "main.h"
-
+/*! \mainpage Project 1 documentation
+ *  \section Sumator
+ *    Sumator enables you to add numbers in any base from 2 to 255.
+ * \author Michal Sieczkowski
+ * \date March 2016
+ */
 using namespace std;
 
 int main(int argc, char* argv[])
