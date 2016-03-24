@@ -25,8 +25,8 @@ public:
     string toString();
     long toLong();
     long long toLongLong();
-    Cyfra* ptrDigitOfNumber(int thisOne);
-    Cyfra getDigitOfNumber(int thisOne);
+    Cyfra* ptrDigitOfNumber(unsigned int thisOne);
+    Cyfra getDigitOfNumber(unsigned int thisOne);
 };
 
 #endif // LICZBA_H

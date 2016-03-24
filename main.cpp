@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     Liczba jakas(240, 6, 8, 5, 235, 89, 103, 155);
     jakas.showNumber();
@@ -29,6 +29,7 @@ int main()
     nowa.setNumberL(1234254, 55);
     nowa.showBase();
     nowa.showNumber();
+	nl();
     return 0;
 }
 

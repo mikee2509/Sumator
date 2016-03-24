@@ -6,7 +6,7 @@ Cyfra::Cyfra(unsigned char num, unsigned char baza, bool prz)
     {
         cout << "UWAGA! Minimalna baza to 2. (Ustawiono base = 2)" << endl;
         base = 2;
-        digit = num;
+        digit = 0;
     }
     else if(num==255)
     {

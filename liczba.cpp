@@ -134,8 +134,8 @@ Liczba Liczba::operator+(Liczba &q)
 
 
     Liczba nowa(base);
-    vector<Cyfra>::iterator i, j, k;
-    for(i=k=first.number.end()-1, j=second.number.end()-1; i>=first.number.begin(); i--, j--)
+    vector<Cyfra>::reverse_iterator i, j, k;
+    for(i=k=first.number.rbegin(), j=second.number.rbegin(); i<first.number.rend(); i++, j++)
     {
         if(i==k || nowa.number.back().getCarry() == false)
             nowa.number.push_back(*i+*j);
@@ -232,12 +232,13 @@ long long Liczba::toLongLong()
     return wynik;
 }
 
-Cyfra* Liczba::ptrDigitOfNumber(int thisOne)
+Cyfra* Liczba::ptrDigitOfNumber(unsigned int thisOne)
 {
-    return &number[thisOne];
+	if (thisOne>=number.size()) return NULL;
+	else return &number[thisOne];
 }
 
-Cyfra Liczba::getDigitOfNumber(int thisOne)
+Cyfra Liczba::getDigitOfNumber(unsigned int thisOne)
 {
-    return number[thisOne];
+	return number[thisOne];
 }
