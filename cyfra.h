@@ -16,6 +16,7 @@ public:
 
     void setDigit(unsigned char num);
     void setBase(unsigned char baza);
+	void setCarry(bool prz) { carry = prz; }
 
     void showDigit() { cout << "Cyfra:  " << static_cast<short>(digit) << endl; }
     void showBase() { cout << "Baza: " << static_cast<short>(base) << endl; }

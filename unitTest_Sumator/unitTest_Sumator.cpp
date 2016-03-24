@@ -87,8 +87,57 @@ TEST(TestingLiczba, LiczbaConstructor)
 
 TEST(TestingLiczba, LiczbaOperatorOverload)
 {
-	Liczba pierwsza(2, 4, 1, 0, 0, 1), druga(2, 3, 1, 1, 1);
+	Liczba pierwsza(16, 6, 4, 1, 5, 4, 8, 4), druga(16, 6, 14, 7, 15, 1, 6, 7);
 	Liczba wynik = pierwsza + druga;
-	EXPECT_EQ(10000, wynik.toLong());
+	EXPECT_EQ(1, wynik.getDigitOfNumber(0).getDigit());
+	EXPECT_EQ(2, wynik.getDigitOfNumber(1).getDigit());
+	EXPECT_EQ(9, wynik.getDigitOfNumber(2).getDigit());
+	EXPECT_EQ(4, wynik.getDigitOfNumber(3).getDigit());
+	EXPECT_EQ(5, wynik.getDigitOfNumber(4).getDigit());
+	EXPECT_EQ(14, wynik.getDigitOfNumber(5).getDigit());
+	EXPECT_EQ(11, wynik.getDigitOfNumber(6).getDigit());
+	EXPECT_EQ("01020904051411", wynik.toString());
+	EXPECT_EQ(1020904051411, wynik.toLongLong());
+	for (int i = 0; i < 7; i++) {
+		EXPECT_EQ(false, wynik.getDigitOfNumber(i).getCarry());
+		EXPECT_EQ(16, wynik.getDigitOfNumber(i).getBase());
+	}
+
+	pierwsza = Liczba(2, 9, 1, 0, 1, 1, 0, 1, 1, 1, 0);
+	druga = Liczba(2, 12, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0);
+	wynik = pierwsza + druga;
+	EXPECT_EQ("110111001010", wynik.toString());
+	EXPECT_EQ(110111001010, wynik.toLongLong());
+	for (int i = 0; i < 12; i++) {
+		EXPECT_EQ(false, wynik.getDigitOfNumber(i).getCarry());
+		EXPECT_EQ(2, wynik.getDigitOfNumber(i).getBase());
+	}
+
+	pierwsza = Liczba(255, 4, 225, 34, 98, 236);
+	druga = Liczba(255, 4, 159, 205, 1, 59);
+	wynik = pierwsza + druga;
+	EXPECT_EQ("001129239100040", wynik.toString());
+	EXPECT_EQ(1129239100040, wynik.toLongLong());
+	for (int i = 0; i < 4; i++) {
+		EXPECT_EQ(false, wynik.getDigitOfNumber(i).getCarry());
+		EXPECT_EQ(255, wynik.getDigitOfNumber(i).getBase());
+	}
 }
 
+TEST(TestingLiczba, LiczbaSetMethodes)
+{
+	Liczba nowa(100, 4, 99, 98, 97, 96);
+	nowa.setNumberL(1129239100040, 255);
+	EXPECT_EQ(1, nowa.getDigitOfNumber(0).getDigit());
+	EXPECT_EQ(129, nowa.getDigitOfNumber(1).getDigit());
+	EXPECT_EQ(239, nowa.getDigitOfNumber(2).getDigit());
+	EXPECT_EQ(100, nowa.getDigitOfNumber(3).getDigit());
+	EXPECT_EQ(40, nowa.getDigitOfNumber(4).getDigit());
+
+	nowa.setNumber(11010, 2);
+	EXPECT_EQ(1, nowa.getDigitOfNumber(0).getDigit());
+	EXPECT_EQ(1, nowa.getDigitOfNumber(1).getDigit());
+	EXPECT_EQ(0, nowa.getDigitOfNumber(2).getDigit());
+	EXPECT_EQ(1, nowa.getDigitOfNumber(3).getDigit());
+	EXPECT_EQ(0, nowa.getDigitOfNumber(4).getDigit());
+}

@@ -139,10 +139,15 @@ Liczba Liczba::operator+(Liczba &q)
     {
         if(i==k || nowa.number.back().getCarry() == false)
             nowa.number.push_back(*i+*j);
-        else
-            nowa.number.push_back(Cyfra(1,base)+*i+*j);
+		else {
+			nowa.number.back().setCarry(false);
+			nowa.number.push_back(Cyfra(1, base) + *i + *j);
+		}
     }
-    if(nowa.number.back().getCarry()) nowa.number.push_back(Cyfra(1,base));
+	if (nowa.number.back().getCarry()) {
+		nowa.number.back().setCarry(false);
+		nowa.number.push_back(Cyfra(1, base));
+	}
     reverse(nowa.number.begin(), nowa.number.end());
     return nowa;
 }
